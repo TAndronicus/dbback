@@ -53,4 +53,13 @@ public class QuerryHandling {
 		
 	}
 
+	@RequestMapping("/readByPatientId/{patientId}")
+	public List<Examination> readAllRecordsGivenPatientId(@PathVariable BigDecimal patientId) {
+
+		System.out.println("Jestem");
+		List<Examination> ents = handling.readAllRecordsGivenPatientId(patientId);
+		return ents;
+
+	}
+
 }

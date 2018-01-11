@@ -14,4 +14,6 @@ public interface IDAO {
 	
 	List<Examination> readAllRecords();
 	
+	List<Examination> readAllRecordsGivenPatientId(BigDecimal patientId);
+	
 }

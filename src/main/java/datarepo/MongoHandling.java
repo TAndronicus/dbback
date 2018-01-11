@@ -1,6 +1,8 @@
 package datarepo;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,18 @@ public class MongoHandling implements IDAO {
 		
 		List<Examination> examinations = mongoOps.findAll(Examination.class);
 		return examinations;
+		
+	}
+
+	@Override
+	public List<Examination> readAllRecordsGivenPatientId(BigDecimal patientId) {
+		
+		List<Examination> allExaminations = mongoOps.findAll(Examination.class);
+		List<Examination> filteredExaminations = new ArrayList<>();
+		for(Examination examination : allExaminations) 
+			if(examination.getpatientId().equals(patientId))
+				filteredExaminations.add(examination);
+		return filteredExaminations;
 		
 	}
 
